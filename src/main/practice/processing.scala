@@ -1,3 +1,4 @@
+// import practice._ 
 import scala.annotation.tailrec
 import scala.util.{Try,Success,Failure}
 
@@ -49,8 +50,9 @@ class InitProcessing(n: Int,
     else filterEven(y, mulDiv(x)/2) 
 }
 
+
 /* val test= new InitProcessing(3, List("shanghai", "berlin", "bielefeld", "bern"), 28, "F") 
 * println(test) 
 * println(test.findMatch()) 
 * println(test.setAge(2020, 2019)) 
-* print(test.filterEven(31)) */ 
+* print(test.filterEven(31))*/
