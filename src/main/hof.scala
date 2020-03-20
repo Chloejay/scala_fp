@@ -19,8 +19,8 @@ print(x(1,2)) //should return 5
 
 //scala 
 def outside_function(f: Int=>Int):(Int, Int)=>Int={
-    def wrapper(a: Int, b:Int):Int= f(a)+f(b)
-    wrapper
+  def wrapper(a: Int, b:Int):Int= f(a)+f(b)
+  wrapper
 }
 
 def pow(a: Int)= a *a 
@@ -59,7 +59,10 @@ println(list_.reduce(_+_))
 
 //scala filter case class 
 case class Person(name: String, age: Int, city: String)
-val person= List(Person("chloe", 28, "shanghai"), Person("emma", 24, "newyork"))
+val person= List(
+  Person("chloe", 28, "shanghai"), 
+  Person("emma", 24, "newyork")
+  )
 val isAgeTrue= person.filter{case Person(name, age, city)=> age>25}
 println(isAgeTrue)
 
@@ -72,7 +75,7 @@ val filterCase= person2.filter{case(name, age)=>age>25}
 println(filterCase)
 
 //case for pattern matching 
-val person_ :PartialFunction[String, Int]= {case "chloe"=>28; case "emma"=>24; case _ => 0}
+val person_ : PartialFunction[String, Int]= {case "chloe"=>28; case "emma"=>24; case _ => 0}
 println(person_ ("chloe"))
 println(person_ ("doc_who")) 
 
