@@ -1,8 +1,4 @@
-package main
-
-trait List[A] {
-  def filter(f: A => Boolean): List[A]
-}
+import func/test.{Test}
 
 //compare with Python for classic wrapper function
 //python 
@@ -22,22 +18,23 @@ def outside_function(f: Int=>Int):(Int, Int)=>Int={
   def wrapper(a: Int, b:Int):Int= f(a)+f(b)
   wrapper
 }
-
 def pow(a: Int)= a *a 
 val result= outside_function(pow)
 println(result(1,2)) //should return 5 
 
-//move parameters one level up 
+//move parameters one level up
 def outside_function(f: Int=>Int, a:Int, b:Int):Int={
-  def wrapper:Int= {f(a)+f(b)}
+  def wrapper:Int= f(a)+f(b)
   wrapper
 }
-val result2= outside_function(a=>a*a, 1,2)// should return 5 
-
 //lambda function(anonymous)
-val result3= outside_function((a: Int)=> a*a) //should return 5 
-//
-val result4= outside_function(a=>a*a) //should return 5
+val result2= outside_function((a:Int)=>a*a, 1,2)// should return 5 
+//use currying 
+def outside_function(f:Int=>Int,a: Int)(b:Int):Int={
+  def wrapper: Int= f(a)+f(b)
+  wrapper
+}
+val result3= outside_function(a=>a*a,1)(2)// should return 5
 
 /** in Python, use map, reduce, filter etc method make use of lambda function
 list_= list(range(1,100)) 
@@ -76,6 +73,9 @@ val person = List(
 val isAgeTrue= person.filter{case Person(name, age, city)=> age > 25}
 println(isAgeTrue)
 
+// type PersonFilter= Person=>Boolean
+// def personTest(people:Seq[Person], f:PersonFilter)=people.filter(f) 
+
 val person2= Map("chloe"->28, "emma"->24)
 val filter2= person2.filter((p:(String, Int))=>p._2> 25)
 println(filter2)
@@ -88,4 +88,8 @@ println(filterCase)
 val person_ : PartialFunction[String, Int]= {case "chloe"=> 28; case "emma"=> 24; case _ => 0}
 println(person_ ("chloe"))
 println(person_ ("doc_who")) 
+
+trait List[A] {
+  def filter(f: A => Boolean): List[A]
+}
 
