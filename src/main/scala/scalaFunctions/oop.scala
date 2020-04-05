@@ -7,10 +7,13 @@ object productTest{
     if (a>b) a
     else f(a) * product(f)(a+1,b) 
   }
+
+  def main():Unit={
+  val pkt= productTest.product(x=>x*x)(1,2)
+  println(pkt)
+  }
 }
 
 object Main{
-  def main{
-    val pkt= productTest.product(x=>x*x)(1,2)
-  }
-}
+  productTest.main()
+} //12 
