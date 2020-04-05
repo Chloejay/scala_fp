@@ -1,7 +1,8 @@
 package scalaFunctions 
 //usage of pattern matching 
 
-//matching by constant value use case class 
+object patternMatch{
+  //matching by constant value use case class 
 val const = List(1,2,3) 
 const match {
   case List(a,b,c)=> a+b+c  
@@ -83,3 +84,5 @@ println(presale.pktName) //coke
 //defined trait Price
 //defined object Price
 //defined class ProductSales
+  
+}

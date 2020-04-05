@@ -1,5 +1,6 @@
 package scalaFunctions
 
+object basicCollections{
 //basic collections methods 
 //Array
 val numbers= Array(1,2,3,4)
@@ -55,7 +56,7 @@ numbers.partition(_ %2 != 0)//(List[Int], List[Int]) = (List(1, 3),List(2, 4))
 //find
 numbers.find((n:Int)=>n>4) //only return thr first elements of the qualified return 
 //drop 
-numbers.drop(2)//drop thee first two elements, return the new val, the ols numbers is not changed, remember is immutable 
+numbers.drop(2)//drop the first two elements, return the new val
 numbers.dropWhile(_%2==0)
 //foldLeft and foldRight
 numbers.foldLeft(0){(a:Int, b:Int)=>println( "a"+a+"b"+b); a+b} //0 here is the starting pos 
@@ -106,3 +107,4 @@ val result= outside_function(pow)
 println(result(1,2))//5 
 val result_opt= outside_function((a: Int)=> a*a)
 val result_opt2= outside_function(a=>a*a)
+}
