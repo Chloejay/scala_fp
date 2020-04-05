@@ -2,7 +2,9 @@ package scalaFunctions
 
 // if/then/else
 // try/catch/finally 
-try {
+
+object Conds{
+  try {
   throwsException();
 } catch {
   case e: IllegalArgumentException => println("illegal arg. exception");
@@ -10,4 +12,5 @@ try {
   case e: IOException              => println("IO exception");
 } finally {
   println("this code is always executed");  
+}
 }

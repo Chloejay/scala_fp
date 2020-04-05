@@ -20,8 +20,6 @@ def outside_function(f: Int=>Int):(Int, Int)=>Int={
   wrapper
 }
 def pow(a: Int)= a *a 
-val result= outside_function(pow)
-println(result(1,2)) //should return 5 
 
 //move parameters one level up
 def outside_function(f: Int=>Int, a:Int, b:Int):Int={
@@ -66,24 +64,9 @@ println(list_ reduce (_+_))
 
 
 //scala filter case class 
-case class Person(name: String, age: Int, city: String)
-val person = List(
-  Person("chloe", 28, "shanghai"), 
-  Person("emma", 24, "newyork")
-  )
+case class Person(name: String, age: Int, city: String) 
 val isAgeTrue= person.filter{case Person(name, age, city)=> age > 25}
-println(isAgeTrue)
-
-// type PersonFilter= Person=>Boolean
-// def personTest(people:Seq[Person], f:PersonFilter)=people.filter(f) 
-
-val person2= Map("chloe"->28, "emma"->24)
-val filter2= person2.filter((p:(String, Int))=>p._2> 25)
-println(filter2)
-
-//use case here again, case is very useful :) 
-val filterCase= person2.filter{case(name, age)=>age> 25} 
-println(filterCase)
+// println(isAgeTrue)
 
 //case for pattern matching 
 val person_ : PartialFunction[String, Int]= {case "chloe"=> 28; case "emma"=> 24; case _ => 0}
@@ -93,4 +76,25 @@ println(person_ ("doc_who"))
 trait List[A] {
   def filter(f: A => Boolean): List[A]
 }
+}
+
+
+
+object Main{
+  def main{
+    val result= outside_function(pow)
+    println(TestHof.result(1,2)) //should return 5 
+    val person = List(
+    Person("chloe", 28, "shanghai"),
+    Person("emma", 24, "newyork")
+    )// type PersonFilter= Person=>Boolean
+    // def personTest(people:Seq[Person], f:PersonFilter)=people.filter(f)
+    
+    val person2= Map("chloe"->28, "emma"->24)
+    val filter2= person2.filter((p:(String, Int))=>p._2> 25)
+    println(filter2)
+    //use case here again, case is very useful :) 
+    val filterCase= person2.filter{case(name, age)=>age> 25} 
+    println(filterCase)
+    }
 }

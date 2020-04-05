@@ -1,23 +1,20 @@
 package scalaFunctions 
 //usage of pattern matching 
 
-object patternMatch{
+object patternMatchConst{
   //matching by constant value use case class 
 val const = List(1,2,3) 
 const match {
-  case List(a,b,c)=> a+b+c  
-} 
+  case List(a,b,c)=> a + b + c} 
 
 case class Person(name: String, age: Int)
 def person(v:Person) =v match {
   case Person(name, age)=> s"$name is $age"
-  case  _ => None 
+  case  _ => None }
 }
-//instance 
-//val c= new Person("chloe", 28)
-//person(c) //return java.io.Serializable = chloe is 28
 
-//use Option[F_] 
+object patterMatchOption{
+  //use Option[F_] 
 case class Person(name: String, email: Option[String])
 def getEmail(name: List[String]): Any = 
 for {
@@ -26,18 +23,19 @@ for {
 
 val person = List(
   Person("chloe", Some("chloejiy@gmail.com")),
-  Person("emma", None)
-)
+  Person("emma", None))
+}
 
-//matching by function variables 
-//for type 
+object patternMatchVars{
+//matching by function variables, type 
 def f(a: Any):String=a match {
 case i: Int=> s"$i is int"
 case i: Double=> s"$i is double"
-case _=> "none"
+case _=> "none"}
 }
 
-//trait/class 
+object patternMatchVar2
+{//trait/class 
 sealed trait User{
   def name: String 
   def score: Int
@@ -47,15 +45,17 @@ case class UserA (val name: String, val score: Int, val upgrade: Double) extends
 case class UserB (val name: String, val score: Int) extends User 
 }
 
-object usersName{
-def testUser(v: User) = { 
-v match{
-case UserA(name, _, _)=>s"hello $name"
-case UserB(name, _)=>s"welcome dear $name"}
-}
+object usersName {
+  def testUser(v: User) = { 
+  v match{
+  case UserA(name, _, _)=>s"hello $name"
+  case UserB(name, _)=>s"welcome dear $name"}
+      }
+  }
 }
 
-//matching by type parameters 
+object patternMatchProduct
+{//matching by type parameters 
 sealed trait Price 
 object Price {
 //no parameter, either write as final case class NoSale() or write object 
@@ -75,14 +75,18 @@ def calculatePrice(cost: Double, price: Price)={
     case Price.PreSalePrice(discount) => cost * discount 
     case Price.OnSalePrice(discount,qty) => cost * discount * (qty * 0.9) 
     case _ => None 
-  }
+    }
+  } 
 }
 
-val presale = new ProductSales(1, "coke", Price.PreSalePrice(1.0))
-val onsale = new ProductSales(2,  "sprite", Price.OnSalePrice(1.0, 2))
-println(presale.pktName) //coke 
-//defined trait Price
-//defined object Price
-//defined class ProductSales
-  
+
+object Main{
+  def main{
+  val c= new Person("chloe", 28) //instance 
+  patternMatchConst.person(c) //return java.io.Serializable = chloe is 28
+
+  val presale = new ProductSales(1, "coke", Price.PreSalePrice(1.0))
+  val onsale = new ProductSales(2,  "sprite", Price.OnSalePrice(1.0, 2))
+  println(presale.pktName) //coke 
+  }
 }

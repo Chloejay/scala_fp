@@ -12,12 +12,11 @@ sealed trait MoveTool
 case object BlackBike extends MoveTool
 case object Train extends MoveTool
 
-def move(tool: Transportation[MoveTool]):Unit={
+object StartMove{
+  def move(tool: Transportation[MoveTool]):Unit={
     println(s"move with $tool")
+  }  
 }
-
-val bike= Transportation.Bikes(BlackBike)
-println(move(bike)) 
 
 //monad pattern 
 //TODO 
@@ -37,5 +36,12 @@ object Monad{
   def unit[A](option: Option[A]):Monad[A]= option match {
     case Some(a)=> Just(a)
     case None=> MaybeNot 
+  }
+}
+
+object Main{
+  def main{
+    val bike= Transportation.Bikes(BlackBike)
+    println(StartMove.move(bike)) 
   }
 }
