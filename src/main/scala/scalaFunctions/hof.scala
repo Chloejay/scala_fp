@@ -1,4 +1,4 @@
-package main
+package scalaFunctions
 
 object TestHof{
   //compare with Python for classic wrapper function

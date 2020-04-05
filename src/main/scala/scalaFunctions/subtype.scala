@@ -1,4 +1,4 @@
-package main 
+package scalaFunctions
 
 //supertype and subtype 
 sealed trait Transportation[+T]

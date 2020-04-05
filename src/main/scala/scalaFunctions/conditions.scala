@@ -1,4 +1,4 @@
-package main 
+package scalaFunctions 
 
 // if/then/else
 // try/catch/finally 

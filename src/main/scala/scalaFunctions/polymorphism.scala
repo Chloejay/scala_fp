@@ -1,4 +1,4 @@
-package main 
+package scalaFunctions 
 
 object Polymorphism{
   //oop subtype 

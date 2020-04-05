@@ -1,4 +1,4 @@
-package main  
+package scalaFunctions 
 
 //currying and recursion method 
 object productTest{
