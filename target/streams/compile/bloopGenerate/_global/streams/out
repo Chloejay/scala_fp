@@ -1,0 +1,4 @@
+[debug] [scala_fp] Classpath dependencies List()
+[debug] [scala_fp] Dependencies from configurations List()
+[debug] Bloop wrote the configuration of project 'scala_fp' to '/Users/chloeji/scala_fp/.bloop/scala_fp.json'
+[success] Generated .bloop/scala_fp.json
