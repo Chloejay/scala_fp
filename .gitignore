@@ -3,9 +3,7 @@
 .DS_Store
 target/
 .metals/
+.metals
 .bloop/
-**/.metals
-**/.bloop
-project/metals.sbt
-
-
+.bloop
+# project/metals.sbt
