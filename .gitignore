@@ -2,3 +2,7 @@
 *.log
 .DS_Store
 target/
+.metals/
+.bloop/
+project/metals.sbt
+

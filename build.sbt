@@ -1,10 +1,24 @@
-ThisBuild / scalaVersion := "2.12.7"
-ThisBuild / organization := "com.chloeji"
-ThisBuild / homepage := Some(url("https://github.com/Chloejay/scala_fp"))
+val Scala_212 = "2.12.11"
 
-lazy val f_p = (project in file("."))
-  .settings(
-    name := "f_p",
-    libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
-    libraryDependencies += "com.eed3si9n" %% "gigahorse-okhttp" % "0.3.1",
-  )
+inThisBuild(List(
+scalaVersion := Scala_212,
+organization := "com.chloejay",
+homepage := Some(url("https://github.com/Chloejay/scala_fp")),
+developers := List(
+Developer(
+    "chloe",
+    "Chloe Ji",
+    "chloejiy@gmail.com",
+    url("https://chloejay.github.io/")
+)))
+)
+
+lazy val framework = project
+.settings(
+moduleName := "scala_fp",
+libraryDependencies ++= List(
+    "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+    "com.eed3si9n" %% "gigahorse-okhttp" % "0.3.1",
+    "com.chuusai" %% "shapeless" % "2.3.3"
+    )
+)
