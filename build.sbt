@@ -13,12 +13,15 @@ Developer(
 )))
 )
 
-lazy val framework = project
-.settings(
-moduleName := "scala_fp",
-libraryDependencies ++= List(
-    "org.scalatest" %% "scalatest" % "3.0.5" % Test,
-    "com.eed3si9n" %% "gigahorse-okhttp" % "0.3.1",
-    "com.chuusai" %% "shapeless" % "2.3.3"
+
+lazy val framework = project in file(".").
+    settings(
+    moduleName := "scala_fp",
+    libraryDependencies ++= List(
+        "org.scalatest" %% "scalatest" % "3.0.5" % Test,
+        "org.typelevel" %% "cats-effect" % "2.0.0",
+        "org.typelevel" %% "cats-core" % "2.0.0",
+        "org.typelevel" %% "cats" % "0.9.0"
+        )
     )
-)
+scalacOptions += "-Ypartial-unification"
