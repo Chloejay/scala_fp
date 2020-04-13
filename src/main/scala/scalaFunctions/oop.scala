@@ -15,5 +15,8 @@ object productTest{
 }
 
 object Main{
-  productTest.main()
-} //12 
+  def main(){
+    import productTest._ 
+    productTest.main() //12 
+  }  
+} 

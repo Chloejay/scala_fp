@@ -12,6 +12,7 @@ sealed trait MoveTool
 case object BlackBike extends MoveTool
 case object Train extends MoveTool
 
+//use object 
 object StartMove{
   def move(tool: Transportation[MoveTool]):Unit={
     println(s"move with $tool")
