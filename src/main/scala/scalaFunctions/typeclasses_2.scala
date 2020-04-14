@@ -3,14 +3,14 @@ package scalaFunctions
 //supertype and subtype 
 sealed trait Transportation[+T]
 object Transportation {
-  final case class Bikes[+T](param:T) extends Transportation[T]
-  final case class Trains[+T](param:T) extends Transportation[T] 
+  final case class Bikes[+T](param:T)   extends Transportation[T]
+  final case class Trains[+T](param:T)  extends Transportation[T] 
   final case object Feet extends Transportation[Nothing] 
 }
 //superclass and subclass 
 sealed trait MoveTool 
 case object BlackBike extends MoveTool
-case object Train extends MoveTool
+case object Train     extends MoveTool
 
 //use object 
 object StartMove{
