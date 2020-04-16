@@ -4,7 +4,7 @@ sealed trait TransportationCharge
 final case class Bike(price: Int)         extends TransportationCharge
 final case class Train(price: Double)     extends TransportationCharge 
 
-//Charge is typeclass, typeclass is normally defined with trait  
+//Charge is typeclass  
 trait Charge[A]{
     def fee(price: A): TransportationCharge} 
 
@@ -17,7 +17,7 @@ object ChargeBike{
   implicit val bikeCharge: Charge[Int] = new Charge[Int]{
     def fee(price: Int): TransportationCharge = Bike(price) 
     }
-  implicit val bikeChargeByCity: Charge[Bikes]= new Charge[Bikes] {
+  implicit val bikeChargeByCity: Charge[Bikes] = new Charge[Bikes] {
   def feeByCity(pair: Bikes): TransportationCharge = {
     Map(price-> pair.pirce, city-> pair.city)
   }
@@ -31,7 +31,9 @@ object ChargeTrain{
   def feeByCity(price: Trains): TransportationCharge = ???
   }
 } 
-  
+
+
+
 object Main{
   def main(args: Array[String]){
       val bike= ChargeBike.bikeCharge.fee(10)

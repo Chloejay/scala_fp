@@ -7,7 +7,6 @@ import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
-//data need to be run in parallel
 object TimeOut{
   val data= 1 to 100 toList 
   def do_work(v: List[Int])= Future{v map (x=> x*x)} 

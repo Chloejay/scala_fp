@@ -4,16 +4,16 @@ package scalaFunctions
   * https://docs.scala-lang.org/tutorials/FAQ/finding-implicits.html
   */
 
-//parameters automatically in scope and unambiguous
+//parameters automatically bind, in scope and unambiguous
 object implicit1{
-    implicit val name= "chloe"
+    implicit val name = "chloe"
     def check(implicit value: String)= 
     println(s"checks name $value without parameters")
     check
 }
 
 object multiplyImplicits{
-    implicit val n=1
+    implicit val n = 1
     def add(x:Int)(implicit y:Int) = x + y
     add(10)
 }
@@ -38,7 +38,6 @@ object adHoc{
       override def read(v: Double): String = v.toString
   }
 }
-
 
 object Main{
     def main(args: Array[String]){
