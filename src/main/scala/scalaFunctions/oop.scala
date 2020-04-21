@@ -1,22 +1,19 @@
 package scalaFunctions 
 
-//currying and recursion method 
-object productTest{
-  def product(f:Int=>Int)(a: Int, b:Int):Int=
+//curry;recursion
+object Add{
+  def ++ (f:Int => Int)(a: Int, b:Int):Int =
   {
-    if (a>b) a
-    else f(a) * product(f)(a+1,b) 
-  }
-
-  def main():Unit={
-  val pkt= productTest.product(x=>x*x)(1,2)
-  println(pkt)
+    if (a > b) a
+    else f(a) * ++(f)(a+1,b) 
   }
 }
 
-object Main{
-  def main(){
-    import productTest._ 
-    productTest.main() //12 
+object OOP{
+  def main(args: Array[String]){
+
+    import Add._ 
+    val pkt = Add.++(x => x+x )(1,2)
+    println(pkt)//24
   }  
 } 

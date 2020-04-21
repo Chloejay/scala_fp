@@ -39,7 +39,7 @@ object adHoc{
   }
 }
 
-object Main{
+object Implicit{
     def main(args: Array[String]){
         import adHoc._ 
         WriteBytes[String].read("soundness") 

@@ -1,18 +1,18 @@
 package scalaFunctions 
 
 object patternMatchConst{
-  //matching by constant value use case class 
+  //matching by constant use case class 
   val const = List[Int](1,2,3) 
   const match {
     case List(a,b,c) => a + b + c} 
   }
 
 object matchByCaseClass{
-  case class Person(name: String, age: Int)
+  case class PersonWithAge(name: String, age: Int)
 
-  def person(v:Person) = v match {
-    case Person(name, age) => s"$name is $age"
-    case Person(_, age) => s"only get $age"
+  def person(v:PersonWithAge) = v match {
+    // case Person(name, _) => s"$name"
+    case PersonWithAge(_, age) if age> 20 => s"only get $age"
     case  _ => None }
 }
 
@@ -25,7 +25,7 @@ object matchByCaseClass{
     } yield user.email 
   }
 
-//matching by function variables, type 
+//matching by variables, type 
 object matchByTypes{
   def f(a: Any):String = a match {
   case i: Int => s"$i is int" 
@@ -48,13 +48,13 @@ object matchByGenerics{
       case _ => None 
   }
   
-  def combine[A](v: Seq[A]) = v match {
+  def ++[A](v: Seq[A]) = v match {
       case v +: _ => Some(v)
       case _ => None 
   }
 }
 
-//trait/case class 
+//(trait/case class) => ADT
 sealed trait User{
   def name: String 
   def score: Int
@@ -105,8 +105,9 @@ object PatternMatch{
   import matchByGenerics._
   import Price._ 
 
-  val c = Person("chloe", 28) 
-  println(person(c)) //return java.io.Serializable = chloe is 28
+  
+  val c = PersonWithAge("chloe", 28) 
+  println(person(c))
   val person = List(
   Person("chloe", Some("chloejiy@gmail.com")),
   Person("emma", None))

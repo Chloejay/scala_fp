@@ -1,16 +1,12 @@
 package abstraction
 
 
-// object transType{
-    // val value: (A,B)=>T= {...}
-// }
-
 trait List[A] {
-    def h_o_f(f:A=>Int): List[A]
+    def h_o_f(f: A => Int): List[A]
 }
 
 case object typeClass {
-    def apply[A](a: A)= a
+    def apply[A](a: A) = a
 }
 
 trait Functor[F[_]] {

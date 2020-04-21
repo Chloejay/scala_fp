@@ -40,7 +40,7 @@ def combine():Future[Int]={
 
 //TODO, use Future to load data parallel from API 
 
-object Main{
+object Future{
     import TimeOut._ 
     import composeFuture._ 
 

@@ -7,10 +7,10 @@ object Conds{
   try {
   throwsException();
 } catch {
-  case e: IllegalArgumentException => println("illegal arg. exception");
-  case e: IllegalStateException    => println("illegal state exception");
-  case e: IOException              => println("IO exception");
+  case e: IllegalArgumentException => e.getMessage;
+  case e: IllegalStateException    => e.getMessage;
+  case e: IOException              => e.getMessage;
 } finally {
-  println("this code is always executed");  
+  println("executed");  
 }
 }

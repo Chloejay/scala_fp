@@ -13,15 +13,20 @@ Developer(
 )))
 )
 
-
-lazy val framework = project in file(".").
+lazy val fp = (project in file(".")).
     settings(
     moduleName := "scala_fp",
-    libraryDependencies ++= List(
+    libraryDependencies ++= Seq(
         "org.scalatest" %% "scalatest" % "3.0.5" % Test,
         "org.typelevel" %% "cats-effect" % "2.0.0",
         "org.typelevel" %% "cats-core" % "2.0.0",
-        "org.typelevel" %% "cats" % "0.9.0"
+        "org.typelevel" %% "cats" % "0.9.0",
+        "org.scalaz" %% "scalaz-core" % "7.2.30",
+        "org.scalaz" %% "scalaz-effect" % "7.2.7",
+        "org.scalaz" %% "scalaz-typelevel" % "7.1.17",
+        "org.scalaz" %% "scalaz-scalacheck-binding" % "7.3.0-M32" % "test"
+        // "org.scala-lang.modules" %% "scala-parallel-collections" % "0.2.0"
         )
     )
 scalacOptions += "-Ypartial-unification"
+// initialCommands in console := "import scalaz._, Scalaz._"

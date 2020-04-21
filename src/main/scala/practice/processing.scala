@@ -5,20 +5,17 @@ package practice
 import scala.annotation.tailrec
 import scala.util.{Try,Success,Failure}
 
-class InitProcessing(n: Int,
-                    city: List[String], 
-                    _age: Int, 
-                    _g: String = null) 
+class InitProcessing(val n: Int,
+                    val city: List[String], 
+                    val _age: Int, 
+                    val _g: String = null) 
 
     object run_process{
-      require( (city != None), "city list should not be null") 
-      val num = n
-      val cityList = city 
-      var singleAge = _age 
-      private var _gender= _g 
-      val funcValue= (_age: Int)=> _age+1 
-      def legitAge(currAge: Int= singleAge): Try[Int]=
-        if (currAge<18) Failure (
+      require((city != None), "city list should not be null") 
+      private var _gender = _g 
+      val funcValue= (_age: Int) => _age+1 
+      def legitAge(currAge: Int = singleAge): Try[Int]=
+        if (currAge < 18) Failure (
           new IllegalArgumentException(
             s"age must be older than 18, received age is $currAge"
             ))
@@ -34,11 +31,11 @@ class InitProcessing(n: Int,
       } 
 
       def findMatch(): List[String]=
-      {var city= List[String]() 
-       val upperCity= cityList map(_.toUpperCase)
+      {var city = List[String]() 
+       val upperCity = cityList map(_.toUpperCase)
        upperCity foreach {c=> println(c)}
        for (c <- upperCity)
-       if ((c indexOf("B"))==0) (city::=c)  
+       if ((c indexOf("B")) == 0) (city:: = c)  
        else city.::(Nil) 
        city 
       }

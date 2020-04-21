@@ -28,7 +28,7 @@ object UserEither2{
 }
  
 
-object Main{
+object DataStruct{
   def main(args: Array[String]){
   import UseOption._ 
   import UseEither._ 

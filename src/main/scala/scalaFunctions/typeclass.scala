@@ -33,13 +33,10 @@ object ChargeTrain{
 } 
 
 
-
-object Main{
+object MainTypes{
   def main(args: Array[String]){
       val bike= ChargeBike.bikeCharge.fee(10)
       val train= ChargeTrain.trainCharge.fee(60.8)
       println(s"Price fee is $bike; train fee is $train") 
   }
 }
-
-
