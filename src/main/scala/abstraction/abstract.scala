@@ -5,7 +5,7 @@ trait List[A] {
     def h_o_f(f: A => Int): List[A]
 }
 
-case object typeClass {
+object typeClass {
     def apply[A](a: A) = a
 }
 

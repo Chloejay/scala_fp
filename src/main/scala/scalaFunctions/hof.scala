@@ -90,8 +90,7 @@ def ++(v: List[Int]): Int = v match{
 
 object HofMain{
   def main(args: Array[String]): Unit = {
-    val pow= (a: Int)=> a * a
-    val result = Hof.outside_function(pow) 
+    val result = Hof.outside_function((a:Int) => a*a) 
     println(result(1,2)) 
     val person = List(Person("chloe", 28, "shanghai"), Person("emma", 24, "newyork")) 
     val person2 = Map("chloe"->28, "emma"->24)

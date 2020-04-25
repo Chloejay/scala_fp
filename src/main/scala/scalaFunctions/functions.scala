@@ -38,6 +38,8 @@ val people = Map(("name","Chloe"), ("age",28))
 people.get("name")//Some(Chloe)
 people.get("age") //Some(28) 
 
+for ((k,v)<- people) yield v 
+
 val pow = n => n*n 
 val result = seqNum map pow  
 val identity = seqNum.foreach(println) 

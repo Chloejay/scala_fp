@@ -9,11 +9,11 @@ object Transportation {
 }
 //superclass and subclass 
 sealed trait MoveTool 
-case object BlackBike  extends MoveTool
+case object BlackBike      extends MoveTool
 case object CityTrain      extends MoveTool
 
 //use object 
-object StartMove{
+object Move{
   def move(tool: Transportation[MoveTool]): Unit = {
     println(s"move with $tool")
   }  
@@ -58,14 +58,17 @@ object Monoid{
 }
 
 object Main{
+  import Monoid._
+  import Transportation._ 
+  import Move._ 
+
   def main(args: Array[String]){
-    import Monoid._
     def ++[A: Monoid](v: List[A]):A = {
     val c = implicitly [Monoid[A]] 
     v.foldLeft(c.empty)(c.combine)}
     println(++(List("ok","viola"))) 
     println(++(List(1,2)))  
     val bike = Transportation.Bikes(BlackBike)
-    println(StartMove.move(bike))
+    println(Move.move(bike))
   }
 }

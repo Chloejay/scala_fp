@@ -7,7 +7,7 @@ package scalaFunctions
 //parameters automatically bind, in scope and unambiguous
 object implicit1{
     implicit val name = "chloe"
-    def check(implicit value: String)= 
+    def check(implicit value: String) = 
     println(s"checks name $value without parameters")
     check
 }
@@ -18,14 +18,14 @@ object multiplyImplicits{
     add(10)
 }
 
-//ad-hoc typeclass 
+//typeclass 
 object adHoc{
   trait WriteBytes[A]{
       def read(v: A): String 
   }
   //companion object as interface 
   object WriteBytes{
-      def apply[A](implicit v: WriteBytes[A]): WriteBytes[A]=v 
+      def apply[A](implicit v: WriteBytes[A]): WriteBytes[A] = v 
   }
   //instance of typeclass 
   implicit val ReadPoetry: WriteBytes[String] = new WriteBytes[String] {
@@ -38,12 +38,30 @@ object adHoc{
       override def read(v: Double): String = v.toString
   }
 }
+//monoid with typeclass and implicit 
+trait SemiGroup[A]{
+  def combine(x: A, y: A):A
+}
+trait Monoid[A] extends SemiGroup[A]{
+  def empty: A
+}
+object Monoid{
+  def apply [A](implicit v: Monoid[A]) = v 
+  
+  implicit val booleanInstance : Monoid[Boolean] = new Monoid[Boolean]{
+  def empty = true 
+  def combine(a: Boolean, b: Boolean) = (a && b) || (!a && b)  
+}
+}
 
 object Implicit{
-    def main(args: Array[String]){
-        import adHoc._ 
-        WriteBytes[String].read("soundness") 
-        WriteBytes[Int].read(0)
-        WriteBytes[Double].read(1.0) 
-    }
+  import adHoc._ 
+  import Monoid._
+  
+  def main(args: Array[String]){
+      WriteBytes[String].read("soundness") 
+      WriteBytes[Int].read(0)
+      WriteBytes[Double].read(1.0) 
+      Monoid.combine(true, true) 
+  }
 }
