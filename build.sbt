@@ -24,7 +24,9 @@ lazy val fp = (project in file(".")).
         "org.scalaz" %% "scalaz-core" % "7.2.30",
         "org.scalaz" %% "scalaz-effect" % "7.2.7",
         "org.scalaz" %% "scalaz-typelevel" % "7.1.17",
-        "org.scalaz" %% "scalaz-scalacheck-binding" % "7.3.0-M32" % "test"
+        "org.scalaz" %% "scalaz-scalacheck-binding" % "7.3.0-M32" % "test",
+        "org.scalacheck" %% "scalacheck" % "1.14.1" % "test",
+        "org.scalariform" %% "scalariform" % "0.2.10"
         // "org.scala-lang.modules" %% "scala-parallel-collections" % "0.2.0"
         )
     )

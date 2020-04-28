@@ -8,7 +8,7 @@ final case class Train(price: Double)     extends TransportationCharge
 trait Charge[A]{
     def fee(price: A): TransportationCharge} 
 
-//TO IMPLEMENT; 
+//TO IMPLEMENT
 class Bikes(price: Int, city: String)
 class Trains(price: Double, city: String)
 
@@ -30,13 +30,12 @@ object ChargeTrain{
   implicit val trainChargeByCity: Charge[Trains] = new Charge[Trains]{
   def feeByCity(price: Trains): TransportationCharge = ???
   }
-} 
-
+}  
 
 object MainTypes{
   def main(args: Array[String]){
-      val bike= ChargeBike.bikeCharge.fee(10)
-      val train= ChargeTrain.trainCharge.fee(60.8)
+      val bike = ChargeBike.bikeCharge.fee(10)
+      val train = ChargeTrain.trainCharge.fee(60.8)
       println(s"Price fee is $bike; train fee is $train") 
   }
 }
