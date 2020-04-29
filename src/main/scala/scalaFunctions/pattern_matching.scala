@@ -29,7 +29,7 @@ object matchByCaseClass{
 object matchByTypes{
   def f(a: Any):String = a match {
   case i: Int => s"$i is int" 
-  case i: Double => s"$i is double"
+  case i: Double if i > 2.0 => s"$i is double"
   case _ => "none"}
 }
 

@@ -9,7 +9,9 @@ object dataStruct extends App{
   val arr = Array(1,2,3,4)
   val mutableArr = ListBuffer(1,2,3,4) 
   val numbers = List(1,2,3,4)
-  val set = Set("a","b","c","d") 
+  val set = Set("a","b","c","d") //immutable 
+  import scala.collection.mutable.{Set=> MutableSet} 
+  val mutableSet = MutableSet("aa","bb","cc","dd") 
   val tuple = ("number",1234)
   val seqNum = Seq(1,2,3)
   val iter = Iterable(1, 2, 3, 4, 5)
@@ -21,6 +23,8 @@ object dataStruct extends App{
   //range 
   (1 until 10 by 2) 
   (10 until 1 by -2) 
+  // case class Tuple(t: T, t2: T)
+
   //4comprehension
   for (i<- 10 until 1  by -1) {println (s"$i is descending int")} 
   for (i<- 1 until 10  by 2)  {println(s"$i is odd int!")}
@@ -38,8 +42,16 @@ object dataStruct extends App{
   people.get("name")
   people.get("age") 
   people.getOrElse("city", "default space is earth!")
-  
-  for ((k,v)<- people if (v == "Chloe")) yield v 
+  people += ("hobby"->"biking", "lang"-> "bytes")
+  people ++= Map("hobby"->"biking", "lang"-> "bytes")
+  people("lang") = "Scala"
+  people.contains("lang") //true 
+  people.take(2) 
+  people.drop(4)
+  for ((k,v) <- people if (v == "Chloe")) yield (k,v)
+
+  val ppl = Map("c"-> "sh", "n"-> "li") 
+  for ((name, city)<- ppl) println(s"$name lives $city") 
   
   val pow = n => n*n 
   val result = seqNum map pow  
@@ -55,18 +67,22 @@ object dataStruct extends App{
   
   //zip 
   List("Chloe", "Emma").zip(List(28,24))  
-  for {a<- List("Chloe", "Emma"); b<- List(28,24)} yield (a,b) //or put return value another func 
+  for {a<- List("Chloe", "Emma"); b<- List(28,24)} yield (a,b) //or expand yield 
   Seq(1,2).zip(Seq(1,2)) 
   
   set contains("a")
   val set2 = set - "a"
-  set ++ set2 
-  
+  set ++ set2
+
+  mutableSet -= "aa"
+  mutableSet += ("ee") 
+  mutableSet.clear()
+
   val add3 = 3 :: numbers
   val add3_ = numbers :+ 3
   
   numbers match {
-    case f::s::l=> List(s,l)
+    case f::s::l => List(s,l)
     case _ => None 
   }
   numbers map { _ * 10} filter { _ > 10}
