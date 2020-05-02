@@ -15,7 +15,9 @@ object dataStruct extends App{
   val tuple = ("number",1234)
   val seqNum = Seq(1,2,3)
   val iter = Iterable(1, 2, 3, 4, 5)
-  println(arr(1)) 
+  val pos1 = Array(arr(1)) 
+  pos1 ++ arr   
+
   // mutableArr(2) = 0 <-> mutableArr.update(2,0)
   //tuple 
   1->10

@@ -34,6 +34,11 @@ def outside_function(f:Int => Int, a:Int)(b:Int):Int = {
 }
 val result2= outside_function(a => a*a, 1)(2)
 
+//curried
+val add: Int => Int => Int = x => y => x + y
+val add1= add(1)
+add1(2)
+
 /** in Python, use map, reduce, filter etc method make use of lambda function
 list_= list(range(1,100)) 
 print(list_)
@@ -43,19 +48,17 @@ from functools import reduce
 print(reduce(lambda x,y: x+y, list_))
 */
 
-/** scala, is more tight and concise, use "_" save bytes*/ 
-val list_ = 1 to 100 
+val list_ = (1 to 100).toList 
 //map 
 println(list_.map(x => x+ 1))
-println(list_ map (_+ 1))
+println(list_ map (_ + 1))
 //filter
 println(list_.filter(x=> x % 2 != 0))
 println(list_ filter (_%2 != 0))
 //reduce 
 println(list_.reduce((x,y) => x + y))
 println(list_ reduce (_+_))
-
-//scala filter case class 
+ 
 case class Person(name: String, age: Int, city: String)
 //pattern matching 
 val person_ : PartialFunction[String, Int] = {case "chloe"=> 28; case "emma"=> 24; case _ => 0}
@@ -68,7 +71,6 @@ trait List[+A] {
 final case class Listing[A](v: A) extends List[A]{
   def filter(f: A => Boolean): List[A] = ???
 }
-
 sealed abstract class Maybe[+A]{
     def isEmpty: Boolean 
     def get: A
@@ -81,15 +83,14 @@ final case object Null extends Maybe[Nothing]{
     def isEmpty: Boolean = true 
     def get = throw new NoSuchElementException("ban!") 
 }
-//recursive
+//recursive, sealed trait + case class pattern -> ADT 
 def ++(v: List[Int]): Int = v match{
     case _ => 0
     case x::ys => x+ ++(ys)
-}
+  }
 }
 
-object HofMain{
-  def main(args: Array[String]): Unit = {
+object HofMain extends App{
     val result = Hof.outside_function((a:Int) => a*a) 
     println(result(1,2)) 
     val person = List(Person("chloe", 28, "shanghai"), Person("emma", 24, "newyork")) 
@@ -99,4 +100,3 @@ object HofMain{
     println(filter2)
     println(filterCase)
   }
-}
